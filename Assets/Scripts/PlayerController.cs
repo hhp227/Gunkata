@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    //주석테스트
     void Update() {
         animator.SetBool("run", false);
         if (Input.GetKey(KeyCode.RightArrow)) {
