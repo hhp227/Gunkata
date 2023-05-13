@@ -37,5 +37,6 @@ public class PlayerController : MonoBehaviour {
             rigidbody2D.AddForce(Vector2.up * 4);
             rigidbody2D.gravityScale = 2;
         }
+
     }
 }
