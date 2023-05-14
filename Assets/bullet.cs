@@ -13,7 +13,8 @@ public class bullet : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-	  if(transform.rotation.y == 0){
+	  if(transform.localScale.x == 1){
+        //if(PlayerController.bulletdir == 0){
         transform.Translate(transform.right * speed * Time.deltaTime); //총알방향 오른쪽
         }
         else{
