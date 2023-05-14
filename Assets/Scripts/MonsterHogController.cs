@@ -17,7 +17,7 @@ public class MonsterHogController : MonoBehaviour {
     void Start() {
     }
 
-    // Update is called once per frame
+    // Update is called once per framee
     void Update() {
         // 몬스터를 이동시킴
         Vector3 movement = new Vector3(direction * speed * Time.deltaTime, 0, 0);
