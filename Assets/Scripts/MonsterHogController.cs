@@ -3,41 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterHogController : MonoBehaviour {
-    private Rigidbody2D rb;
-    public float speed = 5.0f; // 몬스터 이동 속도
-    public float leftBound = -5.0f; // 몬스터가 이동하는 최소 x 좌표
-    public float rightBound = 5.0f; // 몬스터가 이동하는 최대 x 좌표
+    private Rigidbody2D rigid;
+    public int nextMove;
 
-    private bool isGrounded = false;
-    private float direction = 1f;
-
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-
-    void Start() {
-    }
-
-    // Update is called once per framee
-    void Update() {
-        // 몬스터를 이동시킴
-        Vector3 movement = new Vector3(direction * speed * Time.deltaTime, 0, 0);
-        transform.position += movement;
-
-        if (transform.position.x >= rightBound || transform.position.x <= leftBound) {
-            direction *= -1;
-            transform.localScale = new Vector3(direction, 1, 1); // 몬스터의 이미지를 반대로 뒤집음
-        }
+    void Awake() {
+       rigid = GetComponent<Rigidbody2D>();
+        nextMove = 1;
+      // Invoke("Think", 2);
     }
 
     private void FixedUpdate() {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
 
-        if (!isGrounded) {
-            direction = -direction;
-            transform.localScale = new Vector3(direction, 1f, 1f);
+        //이동
+        rigid.velocity = new Vector2(nextMove, rigid.velocity.y);
+
+        //낭떠러지 체크
+        Vector2 frontVec = new Vector2(rigid.position.x + nextMove*0.2f, rigid.position.y);
+        Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
+        RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Platform"));
+        if (rayHit.collider == null) {
+            nextMove *= -1;
+            Debug.Log("낭떠러지체크");
+           
+            // CancelInvoke();
+           //Invoke("Think", 2);
         }
 
-        // 현재 방향으로 이동합니다.
-        rb.velocity = new Vector2(direction * speed, rb.velocity.y);
+    }
+
+    void Think(){
+        //몬스터 움직임 좌우 랜덤
+        //nextMove = Random.Range(-1, 2);
+        // Invoke("Think", 2);
     }
 }
+
