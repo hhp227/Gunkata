@@ -12,8 +12,13 @@ TagManager:
   - Water
   - UI
   - 
+<<<<<<< HEAD
   - 
   - Platform
+=======
+  - player
+  - 
+>>>>>>> origin/#6-tower
   - 
   - 
   - 
@@ -40,4 +45,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ally
+    uniqueID: 2134893247
     locked: 0
