@@ -89,9 +89,9 @@ public class PlayerController : MonoBehaviour {
 	  Invoke("RestartStage",2f);
     }
 
-    void RestartStage () {
-	  GameManager.RestartStage();
-    }
+   // void RestartStage () {
+	  //GameManager.RestartStage();
+   // }
 
 /*
  몬스터와 접촉코드, 몬스터아 코드 제작 중이라 적용 안됨
