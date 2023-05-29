@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float maxSpeed;
+    public float JumpPower;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
@@ -34,9 +35,15 @@ public class PlayerMove : MonoBehaviour
         //walk Animation
         if (Mathf.Abs(rigid.velocity.x) < 0.3){
             anim.SetBool("isWalking", false);
-        }
-        else {
+        }else {
             anim.SetBool("isWalking", true);
+        }
+
+        //Jump
+        if (Input.GetButtonDown("Jump") && !anim.GetBool("isJumping")) {
+            //Debug.Log("JumpLog");
+            rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+            anim.SetBool("isJumping", true);
         }
     }
 
@@ -52,9 +59,21 @@ public class PlayerMove : MonoBehaviour
         }else if (rigid.velocity.x < maxSpeed * (-1)){
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
-
-
         //////rigid.Velocity Used Velocity는 지속적인 움직임////
         //rigid.velocity = new Vector2(maxSpeed * move, rigid.velocity.y);
+
+        //RayCast : 오브젝트 검색을 위해 Ray를 쏘는 방식(충돌감지)
+        if (rigid.velocity.y < 0) {
+            Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
+            //인자값(시작하는위치, 쏘는방향, 거리, 충돌하는레이어)
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
+            if (rayHit.collider != null) {
+                //rayHit.distance : Ray에 닿았을때의 거리
+                if (rayHit.distance < 0.5f) {
+                    anim.SetBool("isJumping", false);
+                    //Debug.Log(rayHit.collider.name);
+                }
+            }
+        }
     }
 }
