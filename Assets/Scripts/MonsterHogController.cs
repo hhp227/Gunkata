@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterHogController : MonoBehaviour {
     private Rigidbody2D rigid;
     public int nextMove;
+    public int speed;
 
     void Awake() {
        rigid = GetComponent<Rigidbody2D>();
@@ -15,7 +16,7 @@ public class MonsterHogController : MonoBehaviour {
     private void FixedUpdate() {
 
         //이동
-        rigid.velocity = new Vector2(nextMove, rigid.velocity.y);
+        rigid.velocity = new Vector2(nextMove, rigid.velocity.y) * 2;
 
         //낭떠러지 체크
         Vector2 frontVec = new Vector2(rigid.position.x + nextMove*0.2f, rigid.position.y);
