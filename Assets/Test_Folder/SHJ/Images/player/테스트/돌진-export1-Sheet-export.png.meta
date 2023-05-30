@@ -463,21 +463,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uB3CC\uC9C4-export1-Sheet-export_0": 1574175563
       "\uB3CC\uC9C4-export1-Sheet-export_1": 1261706482
-      "\uB3CC\uC9C4-export1-Sheet-export_10": 2126092946
-      "\uB3CC\uC9C4-export1-Sheet-export_11": -2005568957
-      "\uB3CC\uC9C4-export1-Sheet-export_12": 1045765567
-      "\uB3CC\uC9C4-export1-Sheet-export_13": -1326324042
       "\uB3CC\uC9C4-export1-Sheet-export_14": 1322555378
-      "\uB3CC\uC9C4-export1-Sheet-export_15": 819478559
-      "\uB3CC\uC9C4-export1-Sheet-export_2": -677386696
-      "\uB3CC\uC9C4-export1-Sheet-export_3": -924011943
-      "\uB3CC\uC9C4-export1-Sheet-export_4": -1886718062
-      "\uB3CC\uC9C4-export1-Sheet-export_5": -1320964664
-      "\uB3CC\uC9C4-export1-Sheet-export_6": -2105984032
-      "\uB3CC\uC9C4-export1-Sheet-export_7": 2136736179
+      "\uB3CC\uC9C4-export1-Sheet-export_10": 2126092946
       "\uB3CC\uC9C4-export1-Sheet-export_8": -959531126
+      "\uB3CC\uC9C4-export1-Sheet-export_13": -1326324042
+      "\uB3CC\uC9C4-export1-Sheet-export_6": -2105984032
+      "\uB3CC\uC9C4-export1-Sheet-export_3": -924011943
+      "\uB3CC\uC9C4-export1-Sheet-export_7": 2136736179
+      "\uB3CC\uC9C4-export1-Sheet-export_12": 1045765567
+      "\uB3CC\uC9C4-export1-Sheet-export_2": -677386696
+      "\uB3CC\uC9C4-export1-Sheet-export_5": -1320964664
+      "\uB3CC\uC9C4-export1-Sheet-export_11": -2005568957
+      "\uB3CC\uC9C4-export1-Sheet-export_15": 819478559
+      "\uB3CC\uC9C4-export1-Sheet-export_4": -1886718062
+      "\uB3CC\uC9C4-export1-Sheet-export_0": 1574175563
       "\uB3CC\uC9C4-export1-Sheet-export_9": -317629629
   spritePackingTag: 
   pSDRemoveMatte: 0
