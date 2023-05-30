@@ -9,24 +9,13 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject tower;
-    // Start is called before the first frame update
     void Start()  {
 
-        StartCoroutine(CreatetowerRoutine());
-    
     }
-
     // Update is called once per frame
-    void Update() {
-        
-    }
-
-    IEnumerator CreatetowerRoutine()
-    {
-        while (true)
-        {
+    void Update(){
+        if (Input.GetKeyDown(KeyCode.Z)){
             CreateTower();
-            yield return new WaitForSeconds(1);
         }
     }
 
@@ -42,17 +31,17 @@ public class GameManager : MonoBehaviour {
             health--;
         else{
             player.OnDie();
-            Debug.Log("»ç¸Á");
+            Debug.Log("Â»Ã§Â¸Ã");
         }
     }
     
-    //³¶¶°·¯ÁöÃ¼Å©
+    //Â³Â¶Â¶Â°Â·Â¯ÃÃ¶ÃƒÂ¼Ã…Â©
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "player") ;
-        //Ã¼·Â°¨¼Ò
+        //ÃƒÂ¼Â·Ã‚Â°Â¨Â¼Ã’
         HealthDown();
 
-        //³¶¶°·¯Áö¿¡ ¶³¾îÁö°í ´Ù½Ã Á¤À§Ä¡
+        //Â³Â¶Â¶Â°Â·Â¯ÃÃ¶Â¿Â¡ Â¶Â³Â¾Ã®ÃÃ¶Â°Ã­ Â´Ã™Â½Ãƒ ÃÂ¤Ã€Â§Ã„Â¡
         collision.attachedRigidbody.velocity = Vector2.zero;
         collision.transform.position = new Vector3(2, 2, -1);
     }
