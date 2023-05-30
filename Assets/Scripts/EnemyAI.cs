@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     public float bulletSpeed = 5f;
     public Transform gunBarrel;
     public GameObject bulletPrefab;
-    public Animator animator;
+    //public Animator animator;
 
     private bool isPlayerDetected = false;
 
@@ -20,15 +20,15 @@ public class EnemyAI : MonoBehaviour
 
     private void FindPlayer()
     {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.transform;
-        }
-        else
-        {
-            Debug.LogError("Player object not found!");
-        }
+        //GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        //if (playerObject != null)
+        //{
+        //    player = playerObject.transform;
+        //}
+        //else
+        //{
+        //    Debug.LogError("Player object not found!");
+        //}
     }
 
     private void Update()
@@ -36,37 +36,35 @@ public class EnemyAI : MonoBehaviour
         if (!isPlayerDetected)
         {
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            if (distanceToPlayer < detectionRange)
-            {
+            if (distanceToPlayer < detectionRange){
                 isPlayerDetected = true;
-                animator.SetBool("isWalking", true);
-            }
-            else
-            {
+                //animator.SetBool("isWalking", true);
+            }else{
                 MoveEnemy();
             }
-        }
-        else
-        {
+        }else{
             ChasePlayer();
         }
     }
 
-    private void MoveEnemy()
-    {
+    private void MoveEnemy(){
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
         transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     private void ChasePlayer()
     {
+        //플레이어 좌/우 위치 확인
         Vector2 direction = player.position - transform.position;
+        //AI 플레이어에게 돌진
         transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
 
-        if (direction.x > 0)
+        //AI 좌우 반전
+        if (direction.x > 0){
             transform.localScale = new Vector3(-1f, 1f, 1f);
-        else if (direction.x < 0)
+        }else if (direction.x < 0) {
             transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 
     private void Attack()
@@ -82,6 +80,6 @@ public class EnemyAI : MonoBehaviour
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
         bulletRigidbody.velocity = direction * bulletSpeed;
 
-        animator.SetTrigger("attack");
+        //animator.SetTrigger("attack");
     }
 }
